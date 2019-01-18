@@ -1,0 +1,29 @@
+.registrationDivider{
+  padding: 17px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  .box{
+    flex: 1 0 200px;
+    margin: 0 5% 0 5%;
+    color: #39BEA0;
+  }
+
+  .boxIn{
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 50px;
+
+    .iconHeader{
+      flex: 1
+    }
+  
+    .titleHeader{
+      flex: 2;
+      color: black;
+    }
+
+  }
+}

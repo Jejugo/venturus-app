@@ -1,0 +1,19 @@
+.NavBar {
+  border: 1px solid #ccc;
+  height: 100px;
+  display: flex; }
+  .NavBar .logo {
+    width: 270px;
+    height: 70px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: left;
+    margin: 1% 0 0 5%; }
+  .NavBar .userDetail {
+    flex: 1 1 0;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: right;
+    margin: 2% 5% 0 0; }
+
+/*# sourceMappingURL=NavBar.css.map */

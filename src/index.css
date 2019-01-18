@@ -1,14 +1,245 @@
 body {
   margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  padding: 0; }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+p, th, tr, label, span {
+  font-family: 'Roboto', sans-serif; }
+
+p {
+  font-size: 13px; }
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: bold; }
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  font-weight: 100; }
+
+.NavBar {
+  border: 1px solid #ccc;
+  height: 100px;
+  display: flex; }
+  .NavBar .logo {
+    width: 270px;
+    height: 70px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: left;
+    margin: 1% 0 0 5%; }
+  .NavBar .userDetail {
+    flex: 1 1 0;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: right;
+    margin: 2% 5% 0 0; }
+
+.header {
+  padding: 17px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #B9E8DE;
+  flex-wrap: wrap; }
+  .header .box {
+    flex-basis: 200px;
+    margin-left: 5%;
+    color: #39BEA0; }
+  .header .iconHeader {
+    float: left;
+    margin: 11%; }
+  .header .titleHeader {
+    margin: 0;
+    margin-top: 15%;
+    color: black; }
+  .header .titleHeader {
+    width: 50%;
+    float: right; }
+
+.tableContainer {
+  margin: 5% 5%; }
+
+.row {
+  display: flex;
+  flex-wrap: wrap; }
+  .row .rowTitle {
+    flex: 1 0 10px; }
+  .row .rowLine {
+    flex: 7 0 200px;
+    height: 1.5px;
+    border: none;
+    /* Set the hr color */
+    color: #838181;
+    /* old IE */
+    background-color: #c2c0c0;
+    /* Modern Browsers */
+    margin: auto 5%; }
+  .row .rowSearch {
+    flex: 4 0 30px;
+    height: 30px;
+    margin: auto 2%; }
+
+#table {
+  border-collapse: collapse;
+  width: 100%;
+  display: table; }
+
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 20px;
+  vertical-align: middle; }
+
+#table tr:nth-child(even) {
+  background-color: #f7f7f7; }
+
+#table tbody tr:hover {
+  background-color: #ddd; }
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid black; }
+
+.registrationDivider {
+  padding: 17px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap; }
+  .registrationDivider .box {
+    flex: 1 0 200px;
+    margin: 0 5% 0 5%;
+    color: #39BEA0; }
+  .registrationDivider .boxIn {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 50px; }
+    .registrationDivider .boxIn .iconHeader {
+      flex: 1; }
+    .registrationDivider .boxIn .titleHeader {
+      flex: 2;
+      color: black; }
+
+.registrationForm {
+  margin: 5% 10%;
+  border: 1px solid #ccc; }
+  .registrationForm .formStyle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; }
+    .registrationForm .formStyle .formBlock {
+      display: flex;
+      flex: 1;
+      flex-direction: column; }
+      .registrationForm .formStyle .formBlock input {
+        flex: 1 0 0;
+        margin: 2% 10%;
+        padding: 11px;
+        border-radius: 5px;
+        border: 1px solid #dddddd;
+        outline-color: #39BEA0; }
+      .registrationForm .formStyle .formBlock .radio {
+        margin: 4% 0; }
+      .registrationForm .formStyle .formBlock .radioContainer {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        padding-left: 30px; }
+      .registrationForm .formStyle .formBlock .radioLabel {
+        margin-left: 10%;
+        vertical-align: sub; }
+      .registrationForm .formStyle .formBlock .radioContainer input {
+        display: none; }
+      .registrationForm .formStyle .formBlock .radioContainer .circle {
+        display: block;
+        width: 25px;
+        height: 25px;
+        background-color: #ffffff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        border: 1px solid #39BEA0; }
+      .registrationForm .formStyle .formBlock .radioContainer:hover .circle {
+        background-color: #ccc; }
+      .registrationForm .formStyle .formBlock .radioContainer input:checked + .circle {
+        background-color: #ffffff; }
+      .registrationForm .formStyle .formBlock .radioContainer input:checked + .circle:after {
+        content: "";
+        height: 14px;
+        width: 14px;
+        background-color: black;
+        position: absolute;
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); }
+      .registrationForm .formStyle .formBlock label {
+        margin-left: 10.5%; }
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0; }
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee; }
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc; }
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3; }
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block; }
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+/*# sourceMappingURL=index.css.map */
