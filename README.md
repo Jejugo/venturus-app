@@ -17,6 +17,11 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+
+# `node app.js`
+
+Runs the server so that the mock api's work to fetch data and insert it into the table
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br>
@@ -46,10 +51,12 @@ Also, I didn't have much time to develop it since I had to conciliate both work 
 
 * First of all, to run the application it's only necessary to have **NodeJs** Installed and run *npm start*.
 * I have done some testing using Jest but didn't have much time testing the components so I did just 2 simples tests. To run them just use *npm test*
+* To make the table work you also have to run the server under the /server folder. Then you just need to run *node app.js*
 * The project, as already mentioned was developed using CSS only with the help of SASS. It has already been compiled and it's ready to use.
 * The project was developed using Redux to hold the user information across the entire application
 * Routing was already used on /home, /users and /user/new routes.
 * Also, it was developed using functional components and class based components depending on its role (visual and dynamics)
+
 
 Improvement actions:
 
