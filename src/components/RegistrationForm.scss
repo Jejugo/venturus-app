@@ -1,6 +1,16 @@
 .registrationForm{
   margin: 5% 10%;
-  border: 1px solid #ccc;
+
+  .btnForm{
+    width: 65px;
+    padding: 8px;
+    margin: 2% 0 2% 2%;
+    background-color: $darkGreen;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 13px;
+  }
 
   .formStyle{
     display: flex;
@@ -12,13 +22,19 @@
       flex: 1;
       flex-direction: column;
 
+      .errorMessage{
+        font-size: 12px;
+        color: red;
+        margin-bottom: 1%;
+      }
+
       input{
         flex: 1 0 0;
-        margin: 2% 10%;
-        padding: 11px;
+        margin: 2% 3% 2% 3%;
+        padding: 2%;
         border-radius: 5px;
         border: 1px solid #dddddd;
-        outline-color: #39BEA0;
+        outline-color: $darkGreen;
       }
 
       .radio{
@@ -56,7 +72,7 @@
       }
 
       .radioContainer:hover .circle{
-        background-color: #ccc;
+        background-color: $hoverColor;
       }
 
       .radioContainer input:checked + .circle{
@@ -76,7 +92,11 @@
       }
 
       label{
-        margin-left: 10.5%;
+        margin-left: 3%;
+      }
+
+      label.titleInput{
+        margin-left: 3%;
       }
     }
   }
@@ -84,16 +104,20 @@
 
 /* The container */
 .container {
-  display: block;
+  display: inline-block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 12px;
+  margin: 20px 0;;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  
+  span{
+    vertical-align: top;
+  }
 }
 
 /* Hide the browser's default checkbox */
@@ -110,19 +134,16 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
+  height: 18px;
+  width: 18px;
+  border-radius: 3px;
+  border: 1px solid $darkGreen;
+  background-color: white;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
   background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: #2196F3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -139,11 +160,11 @@
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
+  left: 6px;
+  top: 3px;
+  width: 3px;
+  height: 8px;
+  border: solid black;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

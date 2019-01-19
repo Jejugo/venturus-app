@@ -6,11 +6,13 @@ class Table extends Component {
   state = {
     tableData: [],
     query: '',
-    filter: []
+    filter: [],
+    isLoading: false
   }
 
   componentDidMount(){
-    Promise.all([retriveTableDataUsers, 
+  
+      Promise.all([retriveTableDataUsers, 
       retriveTableDataPhotos, 
       retriveTableDataAlbums, 
       retriveTableDataPosts, 
@@ -41,6 +43,7 @@ class Table extends Component {
             return photo.albumId === album.id;
           });
           photosArrayConcat.push(...photosArray);
+          return null;
         });
 
         //get ride and weekdays and link it to the user
@@ -61,17 +64,18 @@ class Table extends Component {
           ride: rideValue[0].ride,
           weekDays: weekDay[0].weekDays.join()
         });
+
+        return null;
       });
 
       this.setState({
         tableData: result
       });
 
-      return null;
 
     }).catch(err => {
       console.log('err ', err);
-    })
+    });
   }
 
   handleSearchTable = (e) => {
@@ -80,20 +84,39 @@ class Table extends Component {
     });
   }
 
+  handleDeleteRow = (e) => {
+    let row = e.target.parentElement.parentElement;
+    const username = row.cells[0].innerText;
+
+    
+    this.setState((previousState) => ({
+      tableData: previousState.tableData.filter(data => data.username !== username)
+    }));
+
+    //delete request
+    //axios.delete('url', {params}, {headers...})
+  }
+
   render() {
 
     const { tableData, query } = this.state;
-
+    this.handleDeleteRow = this.handleDeleteRow.bind(this);
     const showingTableRows = query === ''
     ? tableData : 
-    tableData.filter(elem => (elem.username.toLowerCase().includes(query.toLowerCase())));
+    tableData.filter(elem => (elem.username.toLowerCase().includes(query.toLowerCase()) 
+    || elem.name.toLowerCase().includes(query.toLowerCase())));
 
     return (
       <div className="tableContainer">
         <div className="row">
           <h2 className="rowTitle">Users</h2>
           <hr className="rowLine"></hr>
-          <input className="rowSearch" onChange={this.handleSearchTable}></input>
+          <div className="search">
+              <div className="searchIcon">
+              <i class="fas fa-search"></i>
+              </div>
+              <input className="rowSearch inputRoot inputInput" onChange={this.handleSearchTable} placeholder="Search by username or name..."/>
+            </div>
         </div>
         <table id="table">
           <thead>
@@ -107,6 +130,7 @@ class Table extends Component {
               <th>Posts</th>
               <th>Album</th>
               <th>Photos</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -122,6 +146,7 @@ class Table extends Component {
                   <td>{data.posts}</td>
                   <td>{data.albums}</td>
                   <td>{data.photos}</td>
+                  <td><i className="trashIcon far fa-trash-alt" style={{cursor: "pointer"}} onClick={(e) => {if(window.confirm('Are you sure you want to delete this item?')){this.handleDeleteRow(e)};}}></i></td>
                 </tr>
               ))
             }

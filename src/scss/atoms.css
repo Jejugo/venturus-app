@@ -2,8 +2,11 @@ body {
   margin: 0;
   padding: 0; }
 
-p, th, tr, label, span {
+p, th, tr, label, span, li {
   font-family: 'Roboto', sans-serif; }
+
+span, li, input {
+  font-size: 15px; }
 
 p {
   font-size: 13px; }
@@ -17,5 +20,16 @@ h2 {
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
   font-weight: 100; }
+
+hr {
+  flex: 5 0 200px;
+  height: 1px;
+  border: none;
+  /* Set the hr color */
+  color: #838181;
+  /* old IE */
+  background-color: #c2c0c0;
+  /* Modern Browsers */
+  margin: auto 5%; }
 
 /*# sourceMappingURL=atoms.css.map */

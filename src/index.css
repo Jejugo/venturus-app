@@ -2,8 +2,11 @@ body {
   margin: 0;
   padding: 0; }
 
-p, th, tr, label, span {
+p, th, tr, label, span, li {
   font-family: 'Roboto', sans-serif; }
+
+span, li, input {
+  font-size: 15px; }
 
 p {
   font-size: 13px; }
@@ -18,13 +21,23 @@ h2 {
   font-size: 30px;
   font-weight: 100; }
 
+hr {
+  flex: 5 0 200px;
+  height: 1px;
+  border: none;
+  /* Set the hr color */
+  color: #838181;
+  /* old IE */
+  background-color: #c2c0c0;
+  /* Modern Browsers */
+  margin: auto 5%; }
+
 .NavBar {
-  border: 1px solid #ccc;
   height: 100px;
   display: flex; }
   .NavBar .logo {
-    width: 270px;
-    height: 70px;
+    width: 230px;
+    height: 65px;
     justify-content: space-around;
     flex-wrap: wrap;
     text-align: left;
@@ -34,18 +47,40 @@ h2 {
     justify-content: space-around;
     flex-wrap: wrap;
     text-align: right;
-    margin: 2% 5% 0 0; }
+    font-size: 15px;
+    margin: 10px 5% 0 5%; }
+  .NavBar i {
+    margin: 2%; }
+  .NavBar .dropdown {
+    position: absolute;
+    top: 55px;
+    right: 6%; }
+    .NavBar .dropdown ul {
+      background-color: white;
+      padding: 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0px 1px 8px 2px #ccc; }
+    .NavBar .dropdown li {
+      text-decoration: none;
+      list-style-type: none;
+      margin: 0 auto;
+      text-align: left;
+      width: 150px;
+      padding: 12px 20px; }
+    .NavBar .dropdown li:hover {
+      background-color: #eee;
+      color: #39BEA0; }
 
 .header {
   padding: 17px;
-  border: 1px solid #ccc;
   display: flex;
   justify-content: flex-start;
   background-color: #B9E8DE;
   flex-wrap: wrap; }
   .header .box {
     flex-basis: 200px;
-    margin-left: 5%;
+    margin-left: 3%;
     color: #39BEA0; }
   .header .iconHeader {
     float: left;
@@ -58,6 +93,28 @@ h2 {
     width: 50%;
     float: right; }
 
+.breadcrumbContainer ul.breadcrumb {
+  padding: 10px 5%;
+  margin: 0;
+  list-style: none;
+  background-color: #eee; }
+.breadcrumbContainer ul.breadcrumb li {
+  display: inline;
+  font-size: 18px; }
+.breadcrumbContainer ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: black; }
+.breadcrumbContainer ul.breadcrumb li a {
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 1%; }
+.breadcrumbContainer ul.breadcrumb li a .houseIcon {
+  color: #39BEA0; }
+.breadcrumbContainer ul.breadcrumb li a:hover {
+  color: #39BEA0;
+  text-decoration: underline; }
+
 .tableContainer {
   margin: 5% 5%; }
 
@@ -65,21 +122,35 @@ h2 {
   display: flex;
   flex-wrap: wrap; }
   .row .rowTitle {
-    flex: 1 0 10px; }
-  .row .rowLine {
-    flex: 7 0 200px;
-    height: 1.5px;
+    flex: 1 0 10px;
+    margin-left: 1%; }
+  .row .search {
+    flex: 3 0 30px;
+    position: relative; }
+  .row .searchIcon {
+    position: absolute;
+    top: 25px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+    color: grey; }
+  .row .inputRoot {
+    color: black; }
+  .row .inputInput {
+    margin: 0;
+    margin-top: 25px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    padding-left: 15%;
+    width: 80%;
+    border-style: solid;
     border: none;
-    /* Set the hr color */
-    color: #838181;
-    /* old IE */
-    background-color: #c2c0c0;
-    /* Modern Browsers */
-    margin: auto 5%; }
-  .row .rowSearch {
-    flex: 4 0 30px;
-    height: 30px;
-    margin: auto 2%; }
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline-color: #39BEA0; }
 
 #table {
   border-collapse: collapse;
@@ -87,15 +158,14 @@ h2 {
   display: table; }
 
 #table td, #table th {
-  border: 1px solid #ddd;
-  padding: 20px;
+  padding: 15px;
   vertical-align: middle; }
 
 #table tr:nth-child(even) {
   background-color: #f7f7f7; }
 
 #table tbody tr:hover {
-  background-color: #ddd; }
+  background-color: #eee; }
 
 #table th {
   padding-top: 12px;
@@ -106,13 +176,12 @@ h2 {
 
 .registrationDivider {
   padding: 17px;
-  border: 1px solid #ccc;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap; }
   .registrationDivider .box {
     flex: 1 0 200px;
-    margin: 0 5% 0 5%;
+    margin: 0 5% 0 4%;
     color: #39BEA0; }
   .registrationDivider .boxIn {
     display: flex;
@@ -124,9 +193,23 @@ h2 {
       flex: 2;
       color: black; }
 
+.registrationRow {
+  display: flex;
+  margin: 0 5%; }
+  .registrationRow .rowTitle {
+    flex: 1 0 10px; }
+
 .registrationForm {
-  margin: 5% 10%;
-  border: 1px solid #ccc; }
+  margin: 5% 10%; }
+  .registrationForm .btnForm {
+    width: 65px;
+    padding: 8px;
+    margin: 2% 0 2% 2%;
+    background-color: #39BEA0;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 13px; }
   .registrationForm .formStyle {
     display: flex;
     flex-wrap: wrap;
@@ -135,10 +218,14 @@ h2 {
       display: flex;
       flex: 1;
       flex-direction: column; }
+      .registrationForm .formStyle .formBlock .errorMessage {
+        font-size: 12px;
+        color: red;
+        margin-bottom: 1%; }
       .registrationForm .formStyle .formBlock input {
         flex: 1 0 0;
-        margin: 2% 10%;
-        padding: 11px;
+        margin: 2% 3% 2% 3%;
+        padding: 2%;
         border-radius: 5px;
         border: 1px solid #dddddd;
         outline-color: #39BEA0; }
@@ -166,7 +253,7 @@ h2 {
         border-radius: 50%;
         border: 1px solid #39BEA0; }
       .registrationForm .formStyle .formBlock .radioContainer:hover .circle {
-        background-color: #ccc; }
+        background-color: #eee; }
       .registrationForm .formStyle .formBlock .radioContainer input:checked + .circle {
         background-color: #ffffff; }
       .registrationForm .formStyle .formBlock .radioContainer input:checked + .circle:after {
@@ -180,20 +267,24 @@ h2 {
         top: 50%;
         transform: translate(-50%, -50%); }
       .registrationForm .formStyle .formBlock label {
-        margin-left: 10.5%; }
+        margin-left: 3%; }
+      .registrationForm .formStyle .formBlock label.titleInput {
+        margin-left: 3%; }
 
 /* The container */
 .container {
-  display: block;
+  display: inline-block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 12px;
+  margin: 20px 0;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+  .container span {
+    vertical-align: top; }
 
 /* Hide the browser's default checkbox */
 .container input {
@@ -208,17 +299,15 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee; }
+  height: 18px;
+  width: 18px;
+  border-radius: 3px;
+  border: 1px solid #39BEA0;
+  background-color: white; }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
   background-color: #ccc; }
-
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: #2196F3; }
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
@@ -232,11 +321,11 @@ h2 {
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
+  left: 6px;
+  top: 3px;
+  width: 3px;
+  height: 8px;
+  border: solid black;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

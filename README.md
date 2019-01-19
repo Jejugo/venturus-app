@@ -39,30 +39,21 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The project was made having efficency in mind.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I tried to avoid using any kind of css template which was a little bit challenging but rewarding. Thank you for giving me this amazing experience!
+Also, I didn't have much time to develop it since I had to conciliate both work and this project at the same time, and some endpoints weren't so clear on the project description.
 
-### Code Splitting
+* First of all, to run the application it's only necessary to have **NodeJs** Installed and run *npm start*.
+* I have done some testing using Jest but didn't have much time testing the components so I did just 2 simples tests. To run them just use *npm test*
+* The project, as already mentioned was developed using CSS only with the help of SASS. It has already been compiled and it's ready to use.
+* The project was developed using Redux to hold the user information across the entire application
+* Routing was already used on /users and /user/new routes.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Improvement actions:
 
-### Analyzing the Bundle Size
+* Design a more responsible layout
+* Develop the POST and DELETE requests for insertion and deletion of a table row.
+* Develop close dropdown when clicked outside of component
+* Show trash Icon when hovering
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

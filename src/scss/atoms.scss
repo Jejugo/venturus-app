@@ -1,10 +1,21 @@
+$lightGreen: #B9E8DE;
+$darkGreen: #39BEA0;
+$hoverColor: #eee;
+
+
+
+
 body {
   margin: 0;
   padding: 0;
 }
 
-p, th, tr, label, span{
+p, th, tr, label, span, li{
   font-family: 'Roboto', sans-serif;
+}
+
+span, li, input{
+  font-size: 15px;
 }
 
 p{
@@ -21,4 +32,14 @@ h2{
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
   font-weight: 100;
+}
+
+hr{
+  flex: 5 0 200px;
+  height: 1px;
+  border: none;
+  /* Set the hr color */
+  color:rgb(131, 129, 129); /* old IE */
+  background-color: rgb(194, 192, 192); /* Modern Browsers */
+  margin: auto 5%;
 }

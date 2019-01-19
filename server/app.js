@@ -96,6 +96,19 @@ app.get('/week-days', (req, res) => {
   ]);
 });
 
+app.get('/userlogged', (req, res) => {
+  res.json({
+    id: 12345,
+    username: "Jeff Goes",
+    friends: ["Lucas", "Rafael", "Priscila", "Roberta"],
+    savedItems: ["Item1", "Item2", "Item3"],
+    userPrefenences: {
+      dataPrivacy: true,
+      showUserDetails: false
+    }
+  });
+});
+
 app.listen(process.env.PORT || 3001, () => {
   console.log('Server listening on port %s, Ctrl+C to stop', process.env.PORT || 3001)
 })
