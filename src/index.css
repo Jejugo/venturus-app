@@ -33,28 +33,29 @@ hr {
   margin: auto 5%; }
 
 .NavBar {
-  height: 100px;
-  display: flex; }
+  height: 100px; }
   .NavBar .logo {
     width: 230px;
+    float: left;
     height: 65px;
     justify-content: space-around;
     flex-wrap: wrap;
     text-align: left;
     margin: 1% 0 0 5%; }
   .NavBar .userDetail {
-    flex: 1 1 0;
     justify-content: space-around;
+    width: 150px;
+    float: right;
     flex-wrap: wrap;
     text-align: right;
     font-size: 15px;
-    margin: 10px 5% 0 5%; }
+    margin: 30px 5% 0 5%; }
   .NavBar i {
     margin: 2%; }
   .NavBar .dropdown {
     position: absolute;
     top: 55px;
-    right: 6%; }
+    right: 3%; }
     .NavBar .dropdown ul {
       background-color: white;
       padding: 0;

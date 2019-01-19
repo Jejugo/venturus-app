@@ -48,7 +48,7 @@ Also, I didn't have much time to develop it since I had to conciliate both work 
 * I have done some testing using Jest but didn't have much time testing the components so I did just 2 simples tests. To run them just use *npm test*
 * The project, as already mentioned was developed using CSS only with the help of SASS. It has already been compiled and it's ready to use.
 * The project was developed using Redux to hold the user information across the entire application
-* Routing was already used on /users and /user/new routes.
+* Routing was already used on /home, /users and /user/new routes.
 
 Improvement actions:
 

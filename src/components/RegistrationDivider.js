@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
-class RegistrationDivider extends Component {
-  render() {
-    return (
+const RegistrationDivider = (props) => {
+  
+  return(
       <Fragment>
         <div className="registrationRow">
           <h2 className="rowTitle">Registration</h2>
@@ -33,8 +33,7 @@ class RegistrationDivider extends Component {
         </div>
         <hr style={{width: "70%", margin: "3% auto"}}></hr>
       </Fragment>
-    );
-  }
+  )
 }
 
 export default RegistrationDivider;

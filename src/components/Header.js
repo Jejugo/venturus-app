@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
-class Header extends Component {
-  render() {
+const Header = (props) => {
+
     return(
       <Fragment>
         <div className="breadcrumbContainer">
@@ -31,7 +31,6 @@ class Header extends Component {
         </div>
       </Fragment>
     );
-  }
 }
 
 export default Header;
