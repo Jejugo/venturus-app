@@ -66,7 +66,8 @@ class RegistrationForm extends Component {
         {id: 4, label: 'Wed', checked: false},
         {id: 5, label: 'Thu', checked: false},
         {id: 6, label: 'Fri', checked: false},
-        {id: 7, label: 'Sat', checked: false}]
+        {id: 7, label: 'Sat', checked: false}],
+        errors: {}
       })
     }
     else{
