@@ -49,6 +49,7 @@ Also, I didn't have much time to develop it since I had to conciliate both work 
 * The project, as already mentioned was developed using CSS only with the help of SASS. It has already been compiled and it's ready to use.
 * The project was developed using Redux to hold the user information across the entire application
 * Routing was already used on /home, /users and /user/new routes.
+* Also, it was developed using functional components and class based components depending on its role (visual and dynamics)
 
 Improvement actions:
 
@@ -56,4 +57,5 @@ Improvement actions:
 * Develop the POST and DELETE requests for insertion and deletion of a table row.
 * Develop close dropdown when clicked outside of component
 * Show trash Icon when hovering
+* Implement loading while retrieving data from API
 
