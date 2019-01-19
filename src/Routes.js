@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
 import Table from './components/Table';
 import RegistrationForm from './components/RegistrationForm';
+import Page from './components/Page';
 import { connect } from 'react-redux';
 import { userLogInThunk } from './redux/actions/users';
 
@@ -19,11 +20,15 @@ class Routes extends Component {
       <Fragment>
         <NavBar></NavBar>
         <BrowserRouter>
-            <Switch>
-              <Route exact path='/' component={Home}></Route>
-              <Route path='/users/new' component={RegistrationForm}></Route>
-              <Route path='/users' component={Table}></Route>
-            </Switch>
+            <Route path='/' render={() => (
+                <Page>
+                  <Switch>
+                    <Route path='/home' component={Home}></Route>
+                    <Route path='/users/new' component={RegistrationForm}></Route>
+                    <Route path='/users' component={Table}></Route>
+                  </Switch>
+                </Page>
+            )}></Route>
         </BrowserRouter>
       </Fragment>
 
