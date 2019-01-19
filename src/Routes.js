@@ -20,15 +20,18 @@ class Routes extends Component {
       <Fragment>
         <NavBar></NavBar>
         <BrowserRouter>
-            <Route path='/' render={() => (
-                <Page>
-                  <Switch>
-                    <Route path='/home' component={Home}></Route>
-                    <Route path='/users/new' component={RegistrationForm}></Route>
-                    <Route path='/users' component={Table}></Route>
-                  </Switch>
-                </Page>
-            )}></Route>
+            <Route render={() => (
+              <Fragment>
+                  <Page>
+                    <Switch>
+                      <Redirect exact from='/' to='/home'></Redirect>
+                      <Route path='/home' component={Home}></Route>
+                      <Route path='/users/new' component={RegistrationForm}></Route>
+                      <Route path='/users' component={Table}></Route>
+                    </Switch>
+                  </Page>
+              </Fragment>
+              )}></Route>
         </BrowserRouter>
       </Fragment>
 

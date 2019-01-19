@@ -1,20 +1,20 @@
 /*
 Error: Undefined variable: "$darkGreen".
-        on line 52 of /Users/jeffgoes/Documents/WebDevelopment/React/venturus-app/src/components/NavBar.scss
+        on line 53 of /Users/jeffgoes/Documents/WebDevelopment/React/venturus-app/src/components/NavBar.scss
 
-47:       padding: 12px 20px;
-48:     }
-49: 
-50:     li:hover{
-51:       background-color: #eee;
-52:       color: $darkGreen
-53:     }
-54:     
-55:   }
-56: }
+48:       padding: 12px 20px;
+49:     }
+50: 
+51:     li:hover{
+52:       background-color: #eee;
+53:       color: $darkGreen
+54:     }
+55:     
+56:   }
+57: }
 
 Backtrace:
-/Users/jeffgoes/Documents/WebDevelopment/React/venturus-app/src/components/NavBar.scss:52
+/Users/jeffgoes/Documents/WebDevelopment/React/venturus-app/src/components/NavBar.scss:53
 /Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
 /Applications/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
@@ -83,4 +83,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$darkGreen\".\A         on line 52 of /Users/jeffgoes/Documents/WebDevelopment/React/venturus-app/src/components/NavBar.scss\A \A 47:       padding: 12px 20px;\A 48:     }\A 49: \A 50:     li:hover{\A 51:       background-color: #eee;\A 52:       color: $darkGreen\A 53:     }\A 54:     \A 55:   }\A 56: }"; }
+  content: "Error: Undefined variable: \"$darkGreen\".\A         on line 53 of /Users/jeffgoes/Documents/WebDevelopment/React/venturus-app/src/components/NavBar.scss\A \A 48:       padding: 12px 20px;\A 49:     }\A 50: \A 51:     li:hover{\A 52:       background-color: #eee;\A 53:       color: $darkGreen\A 54:     }\A 55:     \A 56:   }\A 57: }"; }
