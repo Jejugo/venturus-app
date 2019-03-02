@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { retriveTableDataUsers, retriveTableDataPhotos, retriveTableDataAlbums, retriveTableDataPosts, retriveTableRide, retriveTableWeekDays } from '../services/api';
+import convertToArray from '../helper/weekDaysArray';
+import { retriveTableDataUsers, retriveTableDataPhotos, retriveTableDataAlbums, retriveTableDataPosts, retriveTableRideAndWeekDays} from '../services/api';
 
 class Table extends Component {
 
@@ -11,13 +12,11 @@ class Table extends Component {
   }
 
   componentDidMount(){
-  
       Promise.all([retriveTableDataUsers, 
       retriveTableDataPhotos, 
       retriveTableDataAlbums, 
       retriveTableDataPosts, 
-      retriveTableRide, 
-      retriveTableWeekDays]).then(([users, photos, albums, posts, ride, weekDays]) => {
+      retriveTableRideAndWeekDays]).then(([users, photos, albums, posts, rideAndWeekDays]) => {
 
       let result = [];
       users.map(user => {
@@ -32,7 +31,8 @@ class Table extends Component {
         albumsArray = albums.filter(album => {
           return album.userId === user.id;
         });
-
+        
+        //given an user, create an array with the posts from that user
         postsArray = posts.filter(post => {
           return post.userId === user.id;
         });
@@ -47,14 +47,17 @@ class Table extends Component {
         });
 
         //get ride and weekdays and link it to the user
-        weekDay = weekDays.filter(day => {
-          return user.id === day.userId;
-        });
-        
-        rideValue = ride.filter(rideItem => {
-          return user.id === rideItem.userId;
+        weekDay = rideAndWeekDays.filter(day => {
+          return user.id === day._id;
         });
 
+        console.log(weekDay);
+        
+        rideValue = rideAndWeekDays.filter(rideItem => {
+          return user.id === rideItem._id;
+        });
+
+        console.log(rideValue);
 
         result.push({
           ...user,
@@ -100,6 +103,7 @@ class Table extends Component {
   render() {
 
     const { tableData, query } = this.state;
+    console.log(tableData);
     this.handleDeleteRow = this.handleDeleteRow.bind(this);
     const showingTableRows = query === ''
     ? tableData : 
@@ -113,7 +117,7 @@ class Table extends Component {
           <hr className="rowLine"></hr>
           <div className="search">
               <div className="searchIcon">
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
               </div>
               <input className="rowSearch inputRoot inputInput" onChange={this.handleSearchTable} placeholder="Search by username or name..."/>
             </div>

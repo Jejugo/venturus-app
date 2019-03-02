@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+
+//USING API GIVEN BY VENTURUS
+
 export const retriveTableDataUsers = new Promise(
   function(resolve, reject){
     axios.get('https://jsonplaceholder.typicode.com/users')
@@ -44,20 +47,11 @@ export const retriveTableDataPosts = new Promise(
   }
 )
 
-export const retriveTableRide = new Promise(
-  function(resolve, reject){
-    axios.get('http://localhost:3001/ride-group')
-    .then(response => {
-      resolve(response.data)
-    }).catch(err => {
-      reject(err);
-    });
-  }
-)
+//Using MONGODB
 
-export const retriveTableWeekDays = new Promise(
+export const retriveTableRideAndWeekDays = new Promise(
   function(resolve, reject){
-    axios.get('http://localhost:3001/week-days')
+    axios.get('http://localhost:3001/api/users')
     .then(response => {
       resolve(response.data)
     }).catch(err => {

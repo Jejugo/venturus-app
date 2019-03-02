@@ -6,10 +6,10 @@ const Header = (props) => {
       <Fragment>
         <div className="breadcrumbContainer">
             <ul className="breadcrumb">
-              <li><a className="breadcrumbItem" href="#"><i class="fas fa-home houseIcon"></i></a><i class="fas fa-angle-right"></i></li>
-              <li><a className="breadcrumbItem" href="#">Page Name</a><i class="fas fa-angle-right"></i></li>
-              <li><a className="breadcrumbItem" href="#">...</a><i class="fas fa-angle-right"></i></li>
-              <li><a className="breadcrumbItem" href="#">Current Page</a><i class="fas fa-angle-right"></i></li>
+              <li><a className="breadcrumbItem" href="#"><i className="fas fa-home houseIcon"></i></a><i className="fas fa-angle-right"></i></li>
+              <li><a className="breadcrumbItem" href="#">Page Name</a><i className="fas fa-angle-right"></i></li>
+              <li><a className="breadcrumbItem" href="#">...</a><i className="fas fa-angle-right"></i></li>
+              <li><a className="breadcrumbItem" href="#">Current Page</a><i className="fas fa-angle-right"></i></li>
             </ul>
         </div>
         <div className="header">
