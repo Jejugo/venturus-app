@@ -32,6 +32,17 @@ hr {
   /* Modern Browsers */
   margin: auto 5%; }
 
+@media only screen and (max-width: 600px) {
+  hr {
+    display: none; }
+
+  .rowTitle {
+    flex: 1;
+    margin-left: 1%; }
+
+  .search {
+    flex: 1;
+    position: relative; } }
 .NavBar {
   height: 100px; }
   .NavBar .logo {
@@ -125,6 +136,8 @@ hr {
   .row .rowTitle {
     flex: 1 0 10px;
     margin-left: 1%; }
+  .row hr {
+    flex-basis: 1%; }
   .row .search {
     flex: 3 0 30px;
     position: relative; }

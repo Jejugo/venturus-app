@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import convertToArray from '../helper/weekDaysArray';
+import axios from 'axios';
+import convertToString from '../helper/weekDaysArray';
 import { retriveTableDataUsers, retriveTableDataPhotos, retriveTableDataAlbums, retriveTableDataPosts, retriveTableRideAndWeekDays} from '../services/api';
 
 class Table extends Component {
@@ -9,6 +10,26 @@ class Table extends Component {
     query: '',
     filter: [],
     isLoading: false
+  }
+
+  componentWillReceiveProps(props){
+    const { newRow } = this.props;
+    const { tableData } = this.state;
+
+    if (props.submit === true){
+      let newRowNormalized = newRow;
+      
+      newRowNormalized.id = tableData.length + 1;
+      let weekDaysString = convertToString(newRowNormalized.weekDays);
+      newRowNormalized.weekDays = weekDaysString
+      newRowNormalized.posts = 0;
+      newRowNormalized.albums = 0;
+      newRowNormalized.photos = 0;
+
+      this.setState((prevState) => ({
+        tableData: [...prevState.tableData, newRowNormalized]
+      }));
+    }
   }
 
   componentDidMount(){
@@ -50,14 +71,10 @@ class Table extends Component {
         weekDay = rideAndWeekDays.filter(day => {
           return user.id === day._id;
         });
-
-        console.log(weekDay);
         
         rideValue = rideAndWeekDays.filter(rideItem => {
           return user.id === rideItem._id;
         });
-
-        console.log(rideValue);
 
         result.push({
           ...user,
@@ -71,9 +88,21 @@ class Table extends Component {
         return null;
       });
 
-      this.setState({
-        tableData: result
-      });
+      if(rideAndWeekDays.length > 10){
+        rideAndWeekDays.map((item, index) => {
+          if(index >= 10){
+            let newWeekDays = convertToString(item.weekDays);
+            item.weekDays = newWeekDays;
+            this.setState((prevState) => ({
+               tableData: [...prevState.tableData, item]
+            }));
+          }
+        });
+      }
+
+     this.setState((prevState) => ({
+        tableData: [...prevState.tableData, ...result]
+      }));
 
 
     }).catch(err => {
@@ -91,19 +120,20 @@ class Table extends Component {
     let row = e.target.parentElement.parentElement;
     const username = row.cells[0].innerText;
 
-    
     this.setState((previousState) => ({
       tableData: previousState.tableData.filter(data => data.username !== username)
     }));
 
     //delete request
-    //axios.delete('url', {params}, {headers...})
+    axios.delete(`http://localhost:3001/api/delete/${username}`, /*{headers...}*/)
+    .then(response => {
+      console.log(response);
+    });
   }
 
   render() {
 
     const { tableData, query } = this.state;
-    console.log(tableData);
     this.handleDeleteRow = this.handleDeleteRow.bind(this);
     const showingTableRows = query === ''
     ? tableData : 
@@ -117,10 +147,10 @@ class Table extends Component {
           <hr className="rowLine"></hr>
           <div className="search">
               <div className="searchIcon">
-              <i className="fas fa-search"></i>
+                <i className="fas fa-search"></i>
               </div>
               <input className="rowSearch inputRoot inputInput" onChange={this.handleSearchTable} placeholder="Search by username or name..."/>
-            </div>
+          </div>
         </div>
         <table id="table">
           <thead>

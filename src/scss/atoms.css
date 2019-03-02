@@ -32,4 +32,16 @@ hr {
   /* Modern Browsers */
   margin: auto 5%; }
 
+@media only screen and (max-width: 600px) {
+  hr {
+    display: none; }
+
+  .rowTitle {
+    flex: 1;
+    margin-left: 1%; }
+
+  .search {
+    flex: 1;
+    position: relative; } }
+
 /*# sourceMappingURL=atoms.css.map */

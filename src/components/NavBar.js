@@ -32,7 +32,6 @@ class NavBar extends Component {
 
     const { showDropDown } = this.state;
     const { userLogged } = this.props;
-    console.log('user!!', userLogged);
 
     return (
       <div className="NavBar">
@@ -63,7 +62,6 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('store!!', state);
   return {
     userLogged: state.userLogged
   }

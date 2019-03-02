@@ -52,6 +52,7 @@ Also, I didn't have much time to develop it since I had to conciliate both work 
 * First of all, to run the application it's only necessary to have **NodeJs** Installed and run *npm start*.
 * I have done some testing using Jest but didn't have much time testing the components so I did just 2 simples tests. To run them just use *npm test*
 * To make the table work you also have to run the server under the /server folder. Then you just need to run *node app.js*
+* To create the Ride and Days of The Week Mock Up I used a MongoDb cloud server so we can use persistent data across the application. It's on mlab plataform so It is not necessary to run any sort of container or mongodb per se. It's already connected
 * The project, as already mentioned was developed using CSS only with the help of SASS. It has already been compiled and it's ready to use.
 * The project was developed using Redux to hold the user information across the entire application
 * Routing was already used on /home, /users and /user/new routes.
@@ -60,8 +61,7 @@ Also, I didn't have much time to develop it since I had to conciliate both work 
 
 Improvement actions:
 
-* Design a more responsible layout
-* Develop the POST and DELETE requests for insertion and deletion of a table row.
+* Design a more responsive layout
 * Develop close dropdown when clicked outside of component
 * Show trash Icon when hovering
 * Implement loading while retrieving data from API

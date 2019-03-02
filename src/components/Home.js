@@ -11,7 +11,7 @@ class Home extends Component {
     username: '',
     name: '',
     email: '',
-    city: '',
+    address: {city: ''},
     ride: '',
     weekDays: [
     {id: 1, label: 'Sun', checked: false},
@@ -26,9 +26,17 @@ class Home extends Component {
   }
 
   handleInputChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    if(e.target.name === 'city'){
+      this.setState({
+        address: {city: e.target.value}
+      });
+    }
+    else{
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    }
+
   }
 
   handleRadio = (e) => {
@@ -37,7 +45,6 @@ class Home extends Component {
     });
   }
   handleCheckBox = (e) => {
-    console.log(e.target.value);
     const value = e.target.value; 
     
     this.setState((previousState) => ({
@@ -48,31 +55,35 @@ class Home extends Component {
 
   }
 
+  emptyFields = (e) => {
+     this.setState({
+        username: '',
+        name: '',
+        email: '',
+        address: {city: ''},
+        ride: '',
+        weekDays: [
+        {id: 1, label: 'Sun', checked: false},
+        {id: 2, label: 'Mon', checked: false}, 
+        {id: 3, label: 'Tue', checked: false},
+        {id: 4, label: 'Wed', checked: false},
+        {id: 5, label: 'Thu', checked: false},
+        {id: 6, label: 'Fri', checked: false},
+        {id: 7, label: 'Sat', checked: false}],
+        errors: {}
+      });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     let res = validateInput(this.state);
-    const { username, name, ride, weekDays, email, city } = this.state;
+    const { username, name, ride, weekDays, email } = this.state;
+
     if(Object.keys(res.errors).length === 0 && res.errors.constructor === Object){
-      axios.post('http://localhost:3001/post/newuser', {user: username, name: name, ride: ride, weekDays: weekDays, email: email, address: city, albums: 0, photos: 0, posts: 0} /*{headers...}*/);
+      axios.post('http://localhost:3001/post/newuser', {username: username, name: name, ride: ride, weekDays: weekDays, email: email, address: {city: this.state.address.city}, albums: 0, photos: 0, posts: 0} /*{headers...}*/);
       this.setState({
         submit: true
       })
-      // this.setState({
-      //   username: '',
-      //   name: '',
-      //   email: '',
-      //   city: '',
-      //   ride: '',
-      //   weekDays: [
-      //   {id: 1, label: 'Sun', checked: false},
-      //   {id: 2, label: 'Mon', checked: false}, 
-      //   {id: 3, label: 'Tue', checked: false},
-      //   {id: 4, label: 'Wed', checked: false},
-      //   {id: 5, label: 'Thu', checked: false},
-      //   {id: 6, label: 'Fri', checked: false},
-      //   {id: 7, label: 'Sat', checked: false}],
-      //   errors: {}
-      // });
     }
 
     else{
@@ -85,18 +96,17 @@ class Home extends Component {
 
     render(){
 
-      const { username, name, errors, email, city, ride, weekDays, submit } = this.state;
-      console.log(submit);
+      const { username, name, errors, email, address, ride, weekDays, submit } = this.state;
 
       return (
         <div className="home">
-          <Table newRow={this.state} submit={submit}></Table>
+          <Table newRow={this.state} submit={submit} emptyFields={this.emptyFields}></Table>
           <RegistrationDivider></RegistrationDivider>
           <RegistrationForm username={username} 
           errors={errors}
           name={name} 
           email={email} 
-          city={city} 
+          address={address} 
           ride={ride} 
           weekDays={weekDays}
           handleInputChange={this.handleInputChange}

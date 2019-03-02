@@ -7,7 +7,7 @@ class RegistrationForm extends Component {
 
   render() {
 
-    const { weekDays, username, name, email, city, errors, ride, handleInputChange, handleRadio, handleCheckBox, handleSubmit } = this.props;
+    const { weekDays, username, name, email, address, errors, ride, handleInputChange, handleRadio, handleCheckBox, handleSubmit } = this.props;
     
     return (
       <div className="registrationForm">
@@ -38,7 +38,7 @@ class RegistrationForm extends Component {
             </div>
             <div className="formBlock">
               <label htmlFor="city" className="titleInput">City</label>
-              <input type="text" id="city" name="city" value={city} onChange={handleInputChange}></input>
+              <input type="text" id="city" name="city" value={address.city} onChange={handleInputChange}></input>
               <label htmlFor="rideInGroup" className="titleInput">Ride in Group?</label>
               <div className="radio">
                 <label className="radioContainer">

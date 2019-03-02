@@ -33,11 +33,9 @@ Usuario.collection.deleteMany({});
 
 //insert Default users
 Usuario.collection.insertMany(list, (err, docs) => {
-  console.log('trying to add collection');
   if(err) {
     console.log(err);
   };
-  console.log('items saved');
 });
 
 app.get('/api/users', (req, res) => { 
@@ -62,19 +60,19 @@ app.get('/userlogged', (req, res) => {
 });
 
 app.post('/post/newuser', urlencodedParser, (req, res) => {
-  console.log('acionou o post!!');
   Usuario.collection.countDocuments().then((count) => {
     req.body._id = count + 1;
 
     Usuario.collection.insertOne(req.body, (err, docs) => {
-      console.log('trying to add one to collection');
       if(err) {
         console.log(err);
       };
-      console.log('item saved');
-      console.log(req.body);
     });
   });
+});
+
+app.delete('/api/delete/:username', (req, res) => {
+  Usuario.collection.deleteOne({username: req.params.username});
 });
 
 app.listen(process.env.PORT || 3001, () => {
