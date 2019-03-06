@@ -1,113 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import convertToString from '../helper/weekDaysArray';
-import { retriveTableDataUsers, retriveTableDataPhotos, retriveTableDataAlbums, retriveTableDataPosts, retriveTableRideAndWeekDays} from '../services/api';
 
 class Table extends Component {
 
   state = {
-    tableData: [],
     query: '',
-    filter: [],
     isLoading: false
-  }
-
-  componentWillReceiveProps(props){
-    const { newRow } = this.props;
-    const { tableData } = this.state;
-
-    if (props.submit === true){
-      let newRowNormalized = newRow;
-      
-      newRowNormalized.id = tableData.length + 1;
-      let weekDaysString = convertToString(newRowNormalized.weekDays);
-      newRowNormalized.weekDays = weekDaysString
-      newRowNormalized.posts = 0;
-      newRowNormalized.albums = 0;
-      newRowNormalized.photos = 0;
-
-      this.setState((prevState) => ({
-        tableData: [...prevState.tableData, newRowNormalized]
-      }));
-    }
-  }
-
-  componentDidMount(){
-      Promise.all([retriveTableDataUsers, 
-      retriveTableDataPhotos, 
-      retriveTableDataAlbums, 
-      retriveTableDataPosts, 
-      retriveTableRideAndWeekDays]).then(([users, photos, albums, posts, rideAndWeekDays]) => {
-
-      let result = [];
-      users.map(user => {
-
-        let albumsArray = [];
-        let postsArray = [];
-        let photosArrayConcat = [];
-        let weekDay = '';
-        let rideValue = '';
-
-        //given an user, create an array with the albums from that user
-        albumsArray = albums.filter(album => {
-          return album.userId === user.id;
-        });
-        
-        //given an user, create an array with the posts from that user
-        postsArray = posts.filter(post => {
-          return post.userId === user.id;
-        });
-
-        //given the album array created, create a photo array with the photos that belong to that album.
-        albumsArray.map(album => {
-          let photosArray = photos.filter(photo => {
-            return photo.albumId === album.id;
-          });
-          photosArrayConcat.push(...photosArray);
-          return null;
-        });
-
-        //get ride and weekdays and link it to the user
-        weekDay = rideAndWeekDays.filter(day => {
-          return user.id === day._id;
-        });
-        
-        rideValue = rideAndWeekDays.filter(rideItem => {
-          return user.id === rideItem._id;
-        });
-
-        result.push({
-          ...user,
-          posts: postsArray.length,
-          albums: albumsArray.length,
-          photos: photosArrayConcat.length,
-          ride: rideValue[0].ride,
-          weekDays: weekDay[0].weekDays.join()
-        });
-
-        return null;
-      });
-
-      if(rideAndWeekDays.length > 10){
-        rideAndWeekDays.map((item, index) => {
-          if(index >= 10){
-            let newWeekDays = convertToString(item.weekDays);
-            item.weekDays = newWeekDays;
-            this.setState((prevState) => ({
-               tableData: [...prevState.tableData, item]
-            }));
-          }
-        });
-      }
-
-     this.setState((prevState) => ({
-        tableData: [...prevState.tableData, ...result]
-      }));
-
-
-    }).catch(err => {
-      console.log('err ', err);
-    });
   }
 
   handleSearchTable = (e) => {
@@ -116,25 +13,11 @@ class Table extends Component {
     });
   }
 
-  handleDeleteRow = (e) => {
-    let row = e.target.parentElement.parentElement;
-    const username = row.cells[0].innerText;
-
-    this.setState((previousState) => ({
-      tableData: previousState.tableData.filter(data => data.username !== username)
-    }));
-
-    //delete request
-    axios.delete(`http://localhost:3001/api/delete/${username}`, /*{headers...}*/)
-    .then(response => {
-      console.log(response);
-    });
-  }
-
   render() {
 
-    const { tableData, query } = this.state;
-    this.handleDeleteRow = this.handleDeleteRow.bind(this);
+    const { query } = this.state;
+    const { handleDeleteRow, tableData } = this.props; 
+    
     const showingTableRows = query === ''
     ? tableData : 
     tableData.filter(elem => (elem.username.toLowerCase().includes(query.toLowerCase()) 
@@ -180,9 +63,9 @@ class Table extends Component {
                   <td>{data.posts}</td>
                   <td>{data.albums}</td>
                   <td>{data.photos}</td>
-                  <td><i className="trashIcon far fa-trash-alt" style={{cursor: "pointer"}} onClick={(e) => {if(window.confirm('Are you sure you want to delete this item?')){this.handleDeleteRow(e)};}}></i></td>
+                  <td><i className="trashIcon far fa-trash-alt" style={{cursor: "pointer"}} onClick={(e) => {if(window.confirm('Are you sure you want to delete this item?')){handleDeleteRow(e)};}}></i></td>
                 </tr>
-              ))
+              )).sort()
             }
           </tbody>
         </table>
